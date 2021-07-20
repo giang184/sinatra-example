@@ -94,9 +94,9 @@ describe '#Album' do
     album2.save()
     album3 = Album.new('a', '2021', 'saf', 'two', nil)
     album3.save()
-    expect(Album.sort()[0][1]).to(eq(album3))
-    expect(Album.sort()[1][1]).to(eq(album2))
-    expect(Album.sort()[2][1]).to(eq(album))
+    expect(Album.sort().values[0]).to(eq(album3))
+    expect(Album.sort().values[1]).to(eq(album2))
+    expect(Album.sort().values[2]).to(eq(album))
   end
 end
 end

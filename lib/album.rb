@@ -50,6 +50,11 @@ class Album
 
   def self.sort
     #for each item in the hash, retrieve the names and push into array. Sort the array. Then search for each names in the array (which returns Album object), push that into a new Hash. Reassign
-    @@albums = @@albums.sort_by { |key, val| val.name.downcase }
+    temp = @@albums.sort_by { |key, val| val.name.downcase }
+    temp_hash = {}
+    temp.each { |element|
+      temp_hash[element[0]] = element[1]
+    }
+    temp_hash
   end
 end

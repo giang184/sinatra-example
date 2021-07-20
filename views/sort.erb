@@ -1,0 +1,6 @@
+<h4> Albums sorted by alphabetical order: </h4>
+<% @sorted_albums.values().each do |album| %>
+  <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
+<% end %>
+<br>
+<a href="/albums">Return to homepage</a>

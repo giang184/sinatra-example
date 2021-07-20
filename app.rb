@@ -18,6 +18,11 @@ get('/albums/new') do
   erb(:new_album)
 end
 
+get('/albums/sort') do
+  @sorted_albums = Album.sort
+  erb(:sort)
+end
+
 post('/albums') do
   name = params[:album_name]
   year = params[:album_year]

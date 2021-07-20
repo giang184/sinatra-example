@@ -44,14 +44,12 @@ class Album
     @@albums.delete(self.id)
   end
 
-
   def self.search(name)
     @@albums.select{|key, value| value.name == name}
   end
 
-
-  # def self.sort
-  #   # for each item in the hash, retrieve the names and push into array. Sort the array. Then search for each names in the array (which returns Album object), push that into a new Hash. Reassign
-  #   @@albums=Hash[@@albums.sort]
-  # end
+  def self.sort
+    #for each item in the hash, retrieve the names and push into array. Sort the array. Then search for each names in the array (which returns Album object), push that into a new Hash. Reassign
+    @@albums = @@albums.sort_by { |key, val| val.name.downcase }
+  end
 end

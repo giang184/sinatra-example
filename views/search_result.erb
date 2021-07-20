@@ -2,3 +2,5 @@
 <% @search_albums.values.each do |album| %>
   <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
 <% end %>
+<br>
+<a href="/albums">Return to album list</a>

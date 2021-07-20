@@ -1,0 +1,4 @@
+<h3>Search Result: <%= @search_albums.length()%> found<h3>
+<% @search_albums.values.each do |album| %>
+  <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
+<% end %>

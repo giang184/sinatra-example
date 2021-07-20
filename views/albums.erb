@@ -11,17 +11,17 @@
 <% else %>
   <p>There are currently no records to display.</p>
 <% end %>
-
+<br>
 <a href="/albums/new">Add a new album</a>
+<br><br>
+<form action="/albums/search_result"  method="post">
 
-<form action="/albums">
-  <div class="form-group">
     <label for="search">Search</label>
-    <input id="search" name="search" class="form-control" type="text">
-  </div>
+    <input id="search" name="search" type="text">
+  
   <button type="submit" class="btn">Go!</button>
 </form>
-
+<h4> click for more details: </h4>
 <% @albums.each do |album| %>
   <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
 <% end %>

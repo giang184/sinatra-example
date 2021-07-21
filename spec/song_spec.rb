@@ -81,7 +81,7 @@ describe '#Song' do
 
   describe('.find_by_album') do
     it("finds songs for an album") do
-      album2 = Album.new("Blue", nil)
+      album2 = Album.new("Blue", '2021', 'pop', 'two', nil)
       album2.save
       song = Song.new("Naima", @album.id, nil)
       song.save()

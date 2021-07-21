@@ -57,4 +57,8 @@ class Album
     }
     temp_hash
   end
+
+  def songs
+    Song.find_by_album(self.id)
+  end
 end

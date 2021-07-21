@@ -102,7 +102,7 @@ describe '#Album' do
 
   describe('#songs') do
     it("returns an album's songs") do
-      album = Album.new("Giant Steps", nil)
+      album = Album.new('Giant Steps', '2021', 'rap', 'one', nil)
       album.save()
       song = Song.new("Naima", album.id, nil)
       song.save()
@@ -111,4 +111,5 @@ describe '#Album' do
       expect(album.songs).to(eq([song, song2]))
     end
   end
+
 end

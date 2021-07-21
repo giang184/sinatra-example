@@ -99,7 +99,6 @@ delete('/albums/:id/songs/:song_id') do
   erb(:album)
 end
 
-
 post('/albums/:id/buy') do
   @album = Album.find(params[:id].to_i())
   @album.sold()

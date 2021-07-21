@@ -8,7 +8,7 @@ describe '#Song' do
   before(:each) do
     Album.clear()
     Song.clear()
-    @album = Album.new("Giant Steps", nil)
+    @album = Album.new("Giant Steps", '2021', 'pop', 'two', nil)
     @album.save()
   end
 

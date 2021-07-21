@@ -2,6 +2,7 @@ class Album
   attr_reader :id, :year, :genre, :artist
   attr_accessor :name
   @@albums = {}
+  @@sold_albums = {}
   @@total_rows = 0 # We've added a class variable to keep track of total rows and increment the value when an Album is added.
 
   def initialize(name, year, genre, artist, id) # We've added id as a second parameter.
@@ -14,6 +15,10 @@ class Album
 
   def self.all
     @@albums.values()
+  end
+
+  def self.sold_all
+    @@sold_albums.values()
   end
 
   def save
@@ -60,5 +65,10 @@ class Album
 
   def songs
     Song.find_by_album(self.id)
+  end
+
+  def sold
+    @@sold_albums[self.id] = Album.new(self.name, self.year, self.genre, self.artist, self.id)
+    @@albums.delete(self.id)
   end
 end

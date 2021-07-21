@@ -28,5 +28,10 @@
 
 
 <p><a href="/albums/<%= @album.id %>/edit">Edit album</a></p>
+
+<form action="/albums/<%= @album.id %>/buy" method="post">
+  <button type="submit" name="buy_album" class="btn">Buy album</button>
+</form>
+
 <p><a href="/albums">Return to album list</a></p>
 

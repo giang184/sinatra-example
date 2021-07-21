@@ -7,11 +7,13 @@ also_reload('lib/**/*.rb')
 
 get('/') do
   @albums = Album.all
+  @sold_albums = Album.sold_all
   erb(:albums)
 end
 
 get('/albums') do
   @albums = Album.all
+  @sold_albums = Album.sold_all
   erb(:albums)
 end
 
@@ -32,6 +34,7 @@ post('/albums') do
   album = Album.new(name, year, genre, artist, nil)
   album.save()
   @albums = Album.all() # Adding this line will fix the error.
+  @sold_albums = Album.sold_all
   erb(:albums)
 end
 
@@ -49,6 +52,7 @@ patch('/albums/:id') do
   @album = Album.find(params[:id].to_i())
   @album.update(params[:name], params[:year], params[:genre], params[:artist])
   @albums = Album.all
+  @sold_albums = Album.sold_all
   erb(:albums)
 end
 
@@ -56,6 +60,7 @@ delete('/albums/:id') do
   @album = Album.find(params[:id].to_i())
   @album.delete()
   @albums = Album.all
+  @sold_albums = Album.sold_all
   erb(:albums)
 end
 
@@ -92,4 +97,13 @@ delete('/albums/:id/songs/:song_id') do
   song.delete
   @album = Album.find(params[:id].to_i())
   erb(:album)
+end
+
+
+post('/albums/:id/buy') do
+  @album = Album.find(params[:id].to_i())
+  @album.sold()
+  @albums = Album.all
+  @sold_albums = Album.sold_all
+  erb(:buy)
 end

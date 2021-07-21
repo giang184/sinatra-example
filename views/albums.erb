@@ -5,7 +5,7 @@
 <% if @albums.any? %>
   <ul>
     <% @albums.each do |album| %>
-      <li><%= album.name %></li>
+      <li><a href="/albums/<%= album.id %>"><%= album.name %></li>
     <% end %>
   </ul>
 <% else %>
@@ -20,12 +20,20 @@
 <br>
 <form action="/albums/search_result"  method="post">
 
-    <label for="search">Search</label>
+    <label for="search">Search:</label>
     <input id="search" name="search" type="text">
   
   <button type="submit" class="btn">Go!</button>
 </form>
-<h4> click for more details: </h4>
-<% @albums.each do |album| %>
-  <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
+
+<h3>Sold Records</h3>
+
+<% if @sold_albums.any? %>
+  <ul>
+    <% @sold_albums.each do |element| %>
+      <li><%= element.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no records to display.</p>
 <% end %>

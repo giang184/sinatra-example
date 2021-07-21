@@ -112,4 +112,17 @@ describe '#Album' do
     end
   end
 
+  describe('.sold') do
+    it("it should sell an album") do 
+      album = Album.new("Giant Steps", '2021', 'rap', 'one', nil)
+      album2 = Album.new("Blue", '2021', 'pop', 'two', nil)
+      album.save()
+      album2.save()
+      expect(Album.all()).to(eq([album, album2]))
+      album.sold()
+      album2.sold()
+      expect(Album.sold_all()).to(eq([album, album2]))
+      expect(Album.all()).to(eq([]))
+    end
+  end
 end

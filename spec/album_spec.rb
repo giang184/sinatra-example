@@ -87,16 +87,28 @@ describe '#Album' do
   end
 
   describe('#sort') do
-  it("sort by name") do
-    album = Album.new('Giant Steps', '2021', 'rap', 'one', nil)
-    album.save()
-    album2 = Album.new('Blue', '2021', 'pop', 'two', nil)
-    album2.save()
-    album3 = Album.new('a', '2021', 'saf', 'two', nil)
-    album3.save()
-    expect(Album.sort().values[0]).to(eq(album3))
-    expect(Album.sort().values[1]).to(eq(album2))
-    expect(Album.sort().values[2]).to(eq(album))
+    it("sort by name") do
+      album = Album.new('Giant Steps', '2021', 'rap', 'one', nil)
+      album.save()
+      album2 = Album.new('Blue', '2021', 'pop', 'two', nil)
+      album2.save()
+      album3 = Album.new('a', '2021', 'saf', 'two', nil)
+      album3.save()
+      expect(Album.sort().values[0]).to(eq(album3))
+      expect(Album.sort().values[1]).to(eq(album2))
+      expect(Album.sort().values[2]).to(eq(album))
+    end
   end
-end
+
+  describe('#songs') do
+    it("returns an album's songs") do
+      album = Album.new("Giant Steps", nil)
+      album.save()
+      song = Song.new("Naima", album.id, nil)
+      song.save()
+      song2 = Song.new("Cousin Mary", album.id, nil)
+      song2.save()
+      expect(album.songs).to(eq([song, song2]))
+    end
+  end
 end
